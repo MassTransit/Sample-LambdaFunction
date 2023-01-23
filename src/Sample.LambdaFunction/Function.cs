@@ -28,9 +28,8 @@ namespace Sample.LambdaFunction
 
                 x.AddConsumer<SubmitOrderConsumer>();
 
-                x.ConfigureReceiveEndpoint((_, cfg) =>
+                x.AddConfigureEndpointsCallback((_, cfg) =>
                 {
-                    cfg.ClearMessageDeserializers();
                     cfg.UseRawJsonSerializer();
                 });
             });
